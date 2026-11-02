@@ -5,53 +5,84 @@
 }
 
 body {
-  font-family: Tahoma, Arial, sans-serif;
-  background-color: #3e3e5f;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+  min-height: 100vh;
   color: #e2e8f0;
   direction: rtl;
 }
 
 .container {
-  max-width: 600px;
-  margin: 40px auto;
-  padding: 20px;
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 40px 20px;
 }
 
 h1 {
   text-align: center;
-  margin-bottom: 30px;
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  background: linear-gradient(90deg, #a5b4fc, #c4b5fd);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  line-height:1.4;
+}
+
+.subtitle {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 14px;
+  margin-bottom: 40px;
+  margin-top: 4px;                /* این خط رو اضافه کن */
 }
 
 .coins-list {
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 16px;
 }
 
 .coin-card {
-  background-color: #131820;
-  border-radius: 12px;
-  padding: 16px;
+  background: rgba(30, 41, 59, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+  border-radius: 16px;
+  padding: 18px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  transition: all 0.25s ease;
+}
+
+.coin-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(165, 180, 252, 0.3);
+  box-shadow: 0 12px 24px -8px rgba(0, 0, 0, 0.4);
 }
 
 .coin-info {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 14px;
+}
+
+.coin-info img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
 }
 
 .coin-info h3 {
   font-size: 16px;
+  font-weight: 600;
   margin-bottom: 2px;
 }
 
 .coin-info span {
   font-size: 13px;
   color: #94a3b8;
+  text-transform: uppercase;
 }
 
 .coin-price {
@@ -62,12 +93,273 @@ h1 {
   gap: 4px;
 }
 
+.coin-price strong {
+  font-size: 17px;
+  font-weight: 600;
+}
+
 .green {
-  color: #22c55e;
-  font-size: 14px;
+  color: #4ade80;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(74, 222, 128, 0.1);
+  padding: 3px 8px;
+  border-radius: 20px;
 }
 
 .red {
-  color: #ef4444;
+  color: #f87171;
+  font-size: 13px;
+  font-weight: 500;
+  background: rgba(248, 113, 113, 0.1);
+  padding: 3px 8px;
+  border-radius: 20px;
+}
+
+/* حالت لودینگ و خطا */
+.loading, .error {
+  text-align: center;
+  padding: 60px 20px;
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+.header-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 40px;
+}
+
+.refresh-btn {
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+  border: none;
+  padding: 10px 24px;
+  border-radius: 10px;
   font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.refresh-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(99, 102, 241, 0.4);
+}
+
+.refresh-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+
+.toman-price {
+  font-size: 13px;
+  color: #94a3b8;
+  margin-top: 2px;
+}
+
+/* ===== Theme Toggle ===== */
+.top-bar {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 20px;
+}
+
+.theme-btn {
+  background: rgba(148, 163, 184, 0.15);
+  border: 1px solid rgba(148, 163, 184, 0.2);
+  color: inherit;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-btn:hover {
+  background: rgba(148, 163, 184, 0.25);
+}
+
+/* ===== Light Theme ===== */
+body.light {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+  color: #0f172a;
+}
+
+body.light .coin-card {
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+body.light .coin-card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+}
+
+body.light .subtitle,
+body.light .coin-info span,
+body.light .toman-price {
+  color: #64748b;
+}
+
+body.light h1 {
+  background: linear-gradient(90deg, #4f46e5, #7c3aed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+body.light .refresh-btn {
+  background: linear-gradient(135deg, #4f46e5, #7c3aed);
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 640px) {
+  .container {
+    padding: 24px 16px;
+  }
+
+  h1 {
+    font-size: 22px;
+    margin-bottom: 6px;
+  }
+
+  .subtitle {
+    font-size: 12px;
+    line-height: 1.6;
+  }
+
+  .header-actions {
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .refresh-btn {
+    padding: 9px 20px;
+    font-size: 13px;
+  }
+
+  .coin-card {
+    padding: 14px 16px;
+  }
+
+  .coin-info img {
+    width: 34px;
+    height: 34px;
+  }
+
+  .coin-info h3 {
+    font-size: 15px;
+  }
+
+  .coin-info span {
+    font-size: 12px;
+  }
+
+  .coin-price strong {
+    font-size: 15px;
+  }
+
+  .toman-price {
+    font-size: 12px;
+  }
+
+  .green,
+  .red {
+    font-size: 12px;
+    padding: 2px 7px;
+  }
+
+  .top-bar {
+    margin-bottom: 12px;
+  }
+}
+/* ===== Skeleton Loading ===== */
+.skeleton-card {
+  pointer-events: none;
+}
+
+.skeleton-info {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.skeleton-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+.skeleton-text-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.skeleton-price {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+}
+
+.skeleton-line {
+  height: 12px;
+  border-radius: 6px;
+  background: linear-gradient(90deg, #334155 25%, #475569 50%, #334155 75%);
+  background-size: 200% 100%;
+  animation: skeleton-loading 1.4s ease infinite;
+}
+
+.skeleton-line.short {
+  width: 70px;
+}
+
+.skeleton-line.shorter {
+  width: 40px;
+}
+
+.skeleton-line.medium {
+  width: 90px;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* برای تم روشن */
+body.light .skeleton-avatar,
+body.light .skeleton-line {
+  background: linear-gradient(90deg, #e2e8f0 25%, #cbd5e1 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+}
+
+
+.error-message {
+  background: rgba(239, 68, 68, 0.15);
+  color: #fca5a5;
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  padding: 12px 16px;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 14px;
+}
+
+body.light .error-message {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border-color: rgba(239, 68, 68, 0.25);
 }
